@@ -35,6 +35,9 @@ elif [ -f /etc/os-release ]; then
 fi
 ARCH=$(uname -m)
 wget https://raw.githubusercontent.com/amidevous/xtream-ui-ubuntu20.04/master/install-dep.sh -O /root/install-dep.sh && bash /root/install-dep.sh
+NON=non
+if [[ "$NON" = "oui" ]] ; then
+echo "test"
 if [[ "$OS" = "CentOs" && "$VER" = "6" && "$ARCH" == "x86_64" ]] ; then
 /opt/rh/devtoolset-9/enable
 source /opt/rh/devtoolset-9/enable
@@ -278,9 +281,11 @@ if [ ! -f "/home/xui/bin/php/lib/php/extensions/no-debug-non-zts-20190902/ioncub
 fi
 #cd /root
 #wget --no-check-certificate https://raw.githubusercontent.com/amidevous/xtream-ui-ubuntu20.04/master/ubuntu/php.ini -O /home/xui/bin/php/lib/php.ini
+rm -rf /home/xui/bin/php/etc/*
 cd /root
 rm -rf /root/phpbuild/
 sudo bash -c "echo 1 > /home/xui/bin/php-7.4.33"
+fi
 fi
 
 if [ -f "/usr/bin/dpkg-buildflags" ]; then
