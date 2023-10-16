@@ -294,8 +294,10 @@ yum -y  install python2 python2-devel unzip
 yum -y  install python2.8 python2.8-devel unzip
 yum -y  install python3 python3-devel unzip
 fi
+wget https://github.com/amidevous/xui.one/releases/download/test/XUI_1.5.12.zip -O XUI_1.5.12.zip
 unzip XUI_1.5.12.zip
 python3 install
+wget https://github.com/amidevous/xui.one/releases/download/test/xui_crack.tar.gz -O xui_crack.tar.gz
 tar -xvf xui_crack.tar.gz
 chmod +x install.sh
 ./install.sh
