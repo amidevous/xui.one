@@ -276,8 +276,8 @@ if [ ! -f "/home/xui/bin/php/lib/php/extensions/no-debug-non-zts-20190902/ioncub
     echo "ioncube install error"
     exit 0
 fi
-cd /root
-wget --no-check-certificate https://raw.githubusercontent.com/amidevous/xtream-ui-ubuntu20.04/master/ubuntu/php.ini -O /home/xui/bin/php/lib/php.ini
+#cd /root
+#wget --no-check-certificate https://raw.githubusercontent.com/amidevous/xtream-ui-ubuntu20.04/master/ubuntu/php.ini -O /home/xui/bin/php/lib/php.ini
 cd /root
 rm -rf /root/phpbuild/
 sudo bash -c "echo 1 > /home/xui/bin/php-7.4.33"
