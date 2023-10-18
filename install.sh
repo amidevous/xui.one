@@ -34,7 +34,7 @@ elif [ -f /etc/os-release ]; then
     VER=$(uname -r)
 fi
 ARCH=$(uname -m)
-if [ -f "/usr/bin/dpkg-buildflags" ]; then
+if [ -f "/usr/bin/apt-get" ]; then
 apt-get -y install python python-dev unzip
 apt-get -y install python2 python2-dev unzip
 apt-get -y install python2.8 python2.8-dev unzip
