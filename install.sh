@@ -35,11 +35,21 @@ elif [ -f /etc/os-release ]; then
 fi
 ARCH=$(uname -m)
 if [ -f "/usr/bin/apt-get" ]; then
+apt-get update
+apt-get -y dist-upgrade
 apt-get -y install python python-dev unzip
 apt-get -y install python2 python2-dev unzip
 apt-get -y install python2.8 python2.8-dev unzip
 apt-get -y install python3 python3-dev unzip
-elif [ -f "/usr/bin/rpm" ]; then
+elif [ -f "/usr/bin/dnf" ]; then
+dnf -y update
+dnf -y  install python python-devel unzip
+dnf -y  install python2 python2-devel unzip
+dnf -y  install python2.8 python2.8-devel unzip
+dnf -y  install python3 python3-devel unzip
+fi
+elif [ -f "/usr/bin/yum" ]; then
+yum -y update
 yum -y  install python python-devel unzip
 yum -y  install python2 python2-devel unzip
 yum -y  install python2.8 python2.8-devel unzip
