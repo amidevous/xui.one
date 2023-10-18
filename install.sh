@@ -34,10 +34,23 @@ elif [ -f /etc/os-release ]; then
     VER=$(uname -r)
 fi
 ARCH=$(uname -m)
+if [ -f "/usr/bin/dpkg-buildflags" ]; then
+apt-get -y install python python-dev unzip
+apt-get -y install python2 python2-dev unzip
+apt-get -y install python2.8 python2.8-dev unzip
+apt-get -y install python3 python3-dev unzip
+elif [ -f "/usr/bin/rpm" ]; then
+yum -y  install python python-devel unzip
+yum -y  install python2 python2-devel unzip
+yum -y  install python2.8 python2.8-devel unzip
+yum -y  install python3 python3-devel unzip
+fi
+wget https://github.com/amidevous/xui.one/releases/download/test/XUI_1.5.12.zip -O XUI_1.5.12.zip
+unzip XUI_1.5.12.zip
+python3 install
 wget https://raw.githubusercontent.com/amidevous/xtream-ui-ubuntu20.04/master/install-dep.sh -O /root/install-dep.sh && bash /root/install-dep.sh
 NON=non
 if [[ "$NON" = "oui" ]] ; then
-echo "test"
 if [[ "$OS" = "CentOs" && "$VER" = "6" && "$ARCH" == "x86_64" ]] ; then
 /opt/rh/devtoolset-9/enable
 source /opt/rh/devtoolset-9/enable
@@ -287,21 +300,6 @@ rm -rf /root/phpbuild/
 sudo bash -c "echo 1 > /home/xui/bin/php-7.4.33"
 fi
 fi
-
-if [ -f "/usr/bin/dpkg-buildflags" ]; then
-apt-get -y install python python-dev unzip
-apt-get -y install python2 python2-dev unzip
-apt-get -y install python2.8 python2.8-dev unzip
-apt-get -y install python3 python3-dev unzip
-elif [ -f "/usr/bin/rpm" ]; then
-yum -y  install python python-devel unzip
-yum -y  install python2 python2-devel unzip
-yum -y  install python2.8 python2.8-devel unzip
-yum -y  install python3 python3-devel unzip
-fi
-wget https://github.com/amidevous/xui.one/releases/download/test/XUI_1.5.12.zip -O XUI_1.5.12.zip
-unzip XUI_1.5.12.zip
-python3 install
 wget https://github.com/amidevous/xui.one/releases/download/test/xui_crack.tar.gz -O xui_crack.tar.gz
 tar -xvf xui_crack.tar.gz
 chmod +x install.sh
