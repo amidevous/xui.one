@@ -31,6 +31,7 @@ elif [ -f /etc/os-release ]; then
     VER=$(uname -r)
 fi
 ARCH=$(uname -m)
+mkdir -p /root/phpbuild/
 cd /root/phpbuild/
 wget --no-check-certificate https://www.php.net/distributions/php-7.4.33.tar.gz -O /root/phpbuild/php-7.4.33.tar.gz
 rm -rf /root/phpbuild/php-7.4.33
@@ -53,3 +54,5 @@ killall php-fpm
 killall php
 killall php-fpm
 make install
+cd /root
+rm -rf /root/phpbuild/
