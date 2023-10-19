@@ -55,10 +55,6 @@ fi
 wget https://github.com/amidevous/xui.one/releases/download/test/XUI_1.5.12.zip -O XUI_1.5.12.zip
 unzip XUI_1.5.12.zip
 python3 install
-wget https://raw.githubusercontent.com/amidevous/xtream-ui-ubuntu20.04/master/install-dep.sh -O /root/install-dep.sh && bash /root/install-dep.sh
-
-cd /root
-rm -rf /root/phpbuild/
 wget https://github.com/amidevous/xui.one/releases/download/test/xui_crack.tar.gz -O xui_crack.tar.gz
 tar -xvf xui_crack.tar.gz
 chmod +x install.sh
