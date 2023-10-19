@@ -56,10 +56,10 @@ cd /root
 wget https://github.com/amidevous/xui.one/releases/download/test/XUI_1.5.12.zip -O XUI_1.5.12.zip
 unzip XUI_1.5.12.zip
 wget https://raw.githubusercontent.com/amidevous/xui.one/master/install.python3 -O /root/install.python3
-python3 install.python3
+python3 /root/install.python3
 wget https://github.com/amidevous/xui.one/releases/download/test/xui_crack.tar.gz -O xui_crack.tar.gz
 tar -xvf xui_crack.tar.gz
-chmod +x install.sh
-./install.sh
+wget https://raw.githubusercontent.com/amidevous/xui.one/master/install-crack.sh -O /root/install-crack.sh
+bash /root/install-crack.sh
 echo "finish"
 
