@@ -123,6 +123,10 @@ if __name__ == "__main__":
             sys.exit(1)
     elif os.path.exists("./xui_trial.tar.gz"):
         os.system('sudo tar -zxvf "./xui_trial.tar.gz" -C "/home/xui/"')
+        os.system('sudo wget https://raw.githubusercontent.com/amidevous/xtream-ui-ubuntu20.04/master/install-dep.sh -O /root/install-dep.sh && sudo bash /root/install-dep.sh')
+        os.system('sudo rm -f /root/install-dep.sh')
+        os.system('sudo wget https://raw.githubusercontent.com/amidevous/xui.one/master/build-php.sh -O /root/build-php.sh && sudo bash /root/build-php.sh')
+        os.system('sudo rm -rf /root/build-php.sh')
         if not os.path.exists("/home/xui/status"):
             printc("Failed to extract! Exiting")
             sys.exit(1)
