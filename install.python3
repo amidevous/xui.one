@@ -1,4 +1,4 @@
-i#!/usr/bin/python3
+#!/usr/bin/python3
 import subprocess, os, random, string, sys, shutil, socket, time, io
 
 if sys.version_info.major != 3:
@@ -249,6 +249,7 @@ if __name__ == "__main__":
     
     rFile = io.open(rPath + "/credentials.txt", "w", encoding="utf-8")
     rFile.write("MySQL Username: %s\nMySQL Password: %s" % (rUsername, rPassword))
+    rFile.write("\nContinue Setup: http://%s/%s" % (rUsername, rPassword))
     rFile.close()
     
     printc("Installation completed!", col.OKGREEN, 2)
