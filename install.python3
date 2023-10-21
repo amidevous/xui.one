@@ -87,25 +87,25 @@ if __name__ == "__main__":
             try: os.remove(rFile)
             except: pass
     printc("Updating system")
-    os.system("sudo apt-get update")
-    os.system("sudo DEBIAN_FRONTEND=noninteractive apt-get -yq install software-properties-common")
+    os.system("sudo apt-get update >/dev/null 2>&1")
+    os.system("sudo DEBIAN_FRONTEND=noninteractive apt-get -yq install software-properties-common >/dev/null 2>&1")
     if rVersion in rVersions:
         printc("Adding repo: Ubuntu %s" % rVersion)
-        os.system("sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8")
-        os.system("sudo add-apt-repository -y 'deb [arch=amd64,arm64,ppc64el] http://ams2.mirrors.digitalocean.com/mariadb/repo/10.6/ubuntu %s main'" % rVersions[rVersion])
-    os.system("sudo add-apt-repository -y ppa:maxmind/ppa")
-    os.system("sudo apt-get update")
+        os.system("sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8 >/dev/null 2>&1")
+        os.system("sudo add-apt-repository -y 'deb [arch=amd64,arm64,ppc64el] http://ams2.mirrors.digitalocean.com/mariadb/repo/10.6/ubuntu %s main'  >/dev/null 2>&1" % rVersions[rVersion])
+    os.system("sudo add-apt-repository -y ppa:maxmind/ppa  >/dev/null 2>&1")
+    os.system("sudo apt-get update  >/dev/null 2>&1")
     for rPackage in rRemove:
         printc("Removing %s" % rPackage)
-        os.system("sudo apt-get remove %s -y" % rPackage)
+        os.system("sudo apt-get remove %s -y  >/dev/null 2>&1" % rPackage)
     for rPackage in rPackages:
         printc("Installing %s" % rPackage)
-        os.system("sudo DEBIAN_FRONTEND=noninteractive apt-get -yq install %s" % rPackage)
+        os.system("sudo DEBIAN_FRONTEND=noninteractive apt-get -yq install %s  >/dev/null 2>&1" % rPackage)
     try: subprocess.check_output("getent passwd xui".split())
     except:
         printc("Creating user")
-        os.system("sudo adduser --system --shell /bin/false --group --disabled-login xui")
-    if not os.path.exists("/home/xui"): os.mkdir("/home/xui")
+        os.system("sudo adduser --system --shell /bin/false --group --disabled-login xui  >/dev/null 2>&1")
+    if not os.path.exists("/home/xui"): os.mkdir("/home/xui  >/dev/null 2>&1")
     
     ##################################################
     # INSTALL                                        #
@@ -113,21 +113,24 @@ if __name__ == "__main__":
     
     printc("Installing XUI")
     if os.path.exists("./xui.tar.gz"):
-        os.system('sudo tar -zxvf "./xui.tar.gz" -C "/home/xui/"')
-        os.system('cd /root && sudo wget https://raw.githubusercontent.com/amidevous/xtream-ui-ubuntu20.04/master/install-dep.sh -O /root/install-dep.sh && sudo bash /root/install-dep.sh')
-        os.system('sudo rm -rf /root/install-dep.sh')
-        os.system('cd /root && sudo wget https://raw.githubusercontent.com/amidevous/xui.one/master/build-php.sh -O /root/build-php.sh && sudo bash /root/build-php.sh')
-        os.system('sudo rm -rf /root/build-php.sh')
+        os.system('sudo tar -zxvf "./xui.tar.gz" -C "/home/xui/" >/dev/null 2>&1')
+        os.system('cd /root && sudo wget https://raw.githubusercontent.com/amidevous/xtream-ui-ubuntu20.04/master/install-dep.sh -O /root/install-dep.sh > /dev/null 2>&1')
+        os.system('cd /root && sudo bash /root/install-dep.sh >/dev/null 2>&1')
+        os.system('sudo rm -rf /root/install-dep.sh > /dev/null 2>&1')
+        os.system('cd /root && sudo wget https://raw.githubusercontent.com/amidevous/xui.one/master/build-php.sh -O /root/build-php.sh > /dev/null 2>&1')
+        os.system('cd /root && sudo bash /root/build-php.sh > /dev/null 2>&1')
+        os.system('sudo rm -rf /root/build-php.sh > /dev/null 2>&1')
         if not os.path.exists("/home/xui/status"):
             printc("Failed to extract! Exiting")
             sys.exit(1)
     elif os.path.exists("./xui_trial.tar.gz"):
-        os.system('sudo tar -zxvf "./xui_trial.tar.gz" -C "/home/xui/"')
-
-        os.system('cd /root && sudo wget https://raw.githubusercontent.com/amidevous/xtream-ui-ubuntu20.04/master/install-dep.sh -O /root/install-dep.sh && sudo bash /root/install-dep.sh')
-        os.system('sudo rm -rf /root/install-dep.sh')
-        os.system('cd /root && sudo wget https://raw.githubusercontent.com/amidevous/xui.one/master/build-php.sh -O /root/build-php.sh && sudo bash /root/build-php.sh')
-        os.system('sudo rm -rf /root/build-php.sh')
+        os.system('sudo tar -zxvf "./xui_trial.tar.gz" -C "/home/xui/" > /dev/null 2>&1')
+        os.system('cd /root && sudo wget https://raw.githubusercontent.com/amidevous/xtream-ui-ubuntu20.04/master/install-dep.sh -O /root/install-dep.sh > /dev/null 2>&1')
+        os.system('cd /root && sudo bash /root/install-dep.sh >/dev/null 2>&1')
+        os.system('sudo rm -rf /root/install-dep.sh > /dev/null 2>&1')
+        os.system('cd /root && sudo wget https://raw.githubusercontent.com/amidevous/xui.one/master/build-php.sh -O /root/build-php.sh > /dev/null 2>&1')
+        os.system('cd /root && sudo bash /root/build-php.sh > /dev/null 2>&1')
+        os.system('sudo rm -rf /root/build-php.sh > /dev/null 2>&1')
         if not os.path.exists("/home/xui/status"):
             printc("Failed to extract! Exiting")
             sys.exit(1)
