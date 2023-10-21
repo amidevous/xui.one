@@ -1058,7 +1058,7 @@ if [[ "$OS" = "Ubuntu" || "$OS" = "debian" ]]; then
  	wget https://files.phpmyadmin.net/phpMyAdmin/4.9.11/phpMyAdmin-4.9.11-all-languages.tar.xz
   	tar -xvf phpMyAdmin-4.9.11-all-languages.tar.xz
    	rm -rf phpMyAdmin-4.9.11-all-languages.tar.xz
-    	mv phpMyAdmin-4.9.11-all-languages.tar.xz phpmyadmin  
+    	mv phpMyAdmin-4.9.11-all-languages phpmyadmin  
 	apt-get -y purge postfix
 	debconf-set-selections <<< "postfix postfix/mailname string redhat"
 	debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
