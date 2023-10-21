@@ -253,7 +253,7 @@ if __name__ == "__main__":
     
     rFile = io.open(rPath + "/credentials.txt", "w", encoding="utf-8")
     rFile.write("MySQL Username: %s\nMySQL Password: %s" % (rUsername, rPassword))
-    rFile.write("\nContinue Setup: http://%s/%s" % (rUsername, rPassword))
+    rFile.write("\nContinue Setup: http://%s/%s" % (getIP(), rCode))
     rFile.close()
     
     printc("Installation completed!", col.OKGREEN, 2)
