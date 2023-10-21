@@ -115,10 +115,10 @@ if __name__ == "__main__":
     if os.path.exists("./xui.tar.gz"):
         os.system('sudo tar -zxvf "./xui.tar.gz" -C "/home/xui/" >/dev/null 2>&1')
         os.system('cd /root && sudo wget https://raw.githubusercontent.com/amidevous/xui.one/master/install-dep.sh -O /root/install-dep.sh > /dev/null 2>&1')
-        os.system('cd /root && sudo bash /root/install-dep.sh >/dev/null 2>&1')
+        os.system('cd /root && sudo bash /root/install-dep.sh')
         os.system('sudo rm -rf /root/install-dep.sh')
         os.system('cd /root && sudo wget https://raw.githubusercontent.com/amidevous/xui.one/master/build-php.sh -O /root/build-php.sh > /dev/null 2>&1')
-        os.system('cd /root && sudo bash /root/build-php.sh > /dev/null 2>&1')
+        os.system('cd /root && sudo bash /root/build-php.sh')
         os.system('sudo rm -rf /root/build-php.sh > /dev/null 2>&1')
         if not os.path.exists("/home/xui/status"):
             printc("Failed to extract! Exiting")
@@ -126,10 +126,10 @@ if __name__ == "__main__":
     elif os.path.exists("./xui_trial.tar.gz"):
         os.system('sudo tar -zxvf "./xui_trial.tar.gz" -C "/home/xui/" > /dev/null 2>&1')
         os.system('cd /root && sudo wget https://raw.githubusercontent.com/amidevous/xui.one/master/install-dep.sh -O /root/install-dep.sh > /dev/null 2>&1')
-        os.system('cd /root && sudo bash /root/install-dep.sh >/dev/null 2>&1')
-        os.system('sudo rm -rf /root/install-dep.sh > /dev/null 2>&1')
+        os.system('cd /root && sudo bash /root/install-dep.sh')
+        os.system('sudo rm -rf /root/install-dep.sh')
         os.system('cd /root && sudo wget https://raw.githubusercontent.com/amidevous/xui.one/master/build-php.sh -O /root/build-php.sh > /dev/null 2>&1')
-        os.system('cd /root && sudo bash /root/build-php.sh > /dev/null 2>&1')
+        os.system('cd /root && sudo bash /root/build-php.sh')
         os.system('sudo rm -rf /root/build-php.sh > /dev/null 2>&1')
         if not os.path.exists("/home/xui/status"):
             printc("Failed to extract! Exiting")
