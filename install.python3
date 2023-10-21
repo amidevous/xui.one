@@ -190,24 +190,13 @@ if __name__ == "__main__":
         os.system("sudo chmod +x /etc/systemd/system/xuione.service")
         os.system("sudo systemctl daemon-reload")
         os.system("sudo systemctl enable xuione")
-    print("Custom sysctl.conf - If you have your own custom sysctl.conf, type N or it will be overwritten. If you don't know what a sysctl configuration is, type Y as it will correctly set your TCP settings and open file limits.")
-    print(" ")
-    while True:
-        rAnswer = input("Overwrite sysctl configuration? Recommended! (Y / N): ")
-        if rAnswer.upper() in ["Y", "N"]: break
-    if rAnswer.upper() == "Y":
-        try: os.system("sudo modprobe ip_conntrack")
-        except: pass
-        try:
-            rFile = io.open("/etc/sysctl.conf", "w", encoding="utf-8")
-            rFile.write(rSysCtl)
-            rFile.close()
-            os.system("sudo sysctl -p >/dev/null 2>&1")
-            rFile = open("/home/xui/config/sysctl.on", "w")
-            rFile.close()
-        except: print("Failed to write to sysctl file.")
-    else:
-        if os.path.exists("/home/xui/config/sysctl.on"): os.remove("/home/xui/config/sysctl.on")
+        os.system("sudo modprobe ip_conntrack")
+        rFile = io.open("/etc/sysctl.conf", "w", encoding="utf-8")
+        rFile.write(rSysCtl)
+        rFile.close()
+        os.system("sudo sysctl -p >/dev/null 2>&1")
+        rFile = open("/home/xui/config/sysctl.on", "w")
+        rFile.close()
     if not "DefaultLimitNOFILE=655350" in open("/etc/systemd/system.conf").read():
         os.system("sudo echo \"\nDefaultLimitNOFILE=655350\" >> \"/etc/systemd/system.conf\"")
         os.system("sudo echo \"\nDefaultLimitNOFILE=655350\" >> \"/etc/systemd/user.conf\"")
