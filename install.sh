@@ -36,18 +36,21 @@ apt-get update
 apt-get -y dist-upgrade
 apt-get -y install python python-dev unzip
 apt-get -y install python2 python2-dev unzip
+apt-get -y install python2.7 python2.7-dev unzip
 apt-get -y install python2.8 python2.8-dev unzip
 apt-get -y install python3 python3-dev unzip
 elif [ -f "/usr/bin/dnf" ]; then
 dnf -y update
 dnf -y  install python python-devel unzip
 dnf -y  install python2 python2-devel unzip
+dnf -y  install python2.7 python2.7-devel unzip
 dnf -y  install python2.8 python2.8-devel unzip
 dnf -y  install python3 python3-devel unzip
 elif [ -f "/usr/bin/yum" ]; then
 yum -y update
 yum -y  install python python-devel unzip
 yum -y  install python2 python2-devel unzip
+yum -y  install python2.7 python2.7-devel unzip
 yum -y  install python2.8 python2.8-devel unzip
 yum -y  install python3 python3-devel unzip
 fi
@@ -56,9 +59,5 @@ wget https://github.com/amidevous/xui.one/releases/download/test/XUI_1.5.12.zip 
 unzip XUI_1.5.12.zip
 wget https://raw.githubusercontent.com/amidevous/xui.one/master/install.python3 -O /root/install.python3
 python3 /root/install.python3
-wget https://github.com/amidevous/xui.one/releases/download/test/xui_crack.tar.gz -O xui_crack.tar.gz
-tar -xvf xui_crack.tar.gz
-wget https://raw.githubusercontent.com/amidevous/xui.one/master/install-crack.sh -O /root/install-crack.sh
-bash /root/install-crack.sh
 echo "finish"
 
