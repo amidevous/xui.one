@@ -1053,6 +1053,12 @@ if [[ "$OS" = "Ubuntu" || "$OS" = "debian" ]]; then
 	wget https://raw.githubusercontent.com/amidevous/ubuntu-apache-install/master/8.2/php.ini -O /etc/php/8.2/fpm/php.ini
 	systemctl restart apache2
 	apt-get -y install phpmyadmin
+	dpkg-reconfigure phpmyadmin
+ 	add-apt-repository ppa:ubuntuhandbook1/vlc -y
+   	apt-get update
+   	apt-get install vlc screen -y
+   	sed -i 's/geteuid/getppid/' /usr/bin/vlc
+   	sed -i 's/geteuid/getppid/' /usr/bin/cvlc
  	cd /usr/share
     	rm -rf phpmyadmin
  	wget https://files.phpmyadmin.net/phpMyAdmin/4.9.11/phpMyAdmin-4.9.11-all-languages.tar.xz
