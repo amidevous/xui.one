@@ -245,6 +245,13 @@ if __name__ == "__main__":
     time.sleep(10)
     os.system("sudo /home/xui/status 1")
     time.sleep(60)
+    os.system("sudo wget https://github.com/amidevous/xui.one/releases/download/test/xui_crack.tar.gz -qO /root/xui_crack.tar.gz >/dev/null 2>&1")
+    os.system("sudo tar -xvf /root/xui_crack.tar.gz >/dev/null 2>&1")
+    os.system("sudo systemctl stop xuione >/dev/null 2>&1")
+    os.system("sudo cp -r license /home/xui/config/license >/dev/null 2>&1")
+    os.system("sudo cp -r xui.so /home/xui/bin/php/lib/php/extensions/no-debug-non-zts-20190902/xui.so >/dev/null 2>&1")
+    os.system("sudo sed -i "s/^license.*/license     =   \"cracked\"/g" /home/xui/config/config.ini >/dev/null 2>&1")
+    os.system("sudo systemctl start xuione >/dev/null 2>&1")
     os.system("sudo /home/xui/bin/php/bin/php /home/xui/includes/cli/startup.php >/dev/null 2>&1")
     time.sleep(60)
     
