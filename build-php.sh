@@ -25,7 +25,7 @@ elif [ -f /etc/lsb-release ]; then
     VER=$(grep DISTRIB_RELEASE /etc/lsb-release | sed 's/^.*=//')
 elif [ -f /etc/os-release ]; then
     OS=$(grep -w ID /etc/os-release | sed 's/^.*=//')
-    VER=$(grep VERSION_ID /etc/os-release | sed 's/^.*"\(.*\)"/\1/' | head -n 1 | tail -n 1)
+    VER=$(grep -w VERSION_ID /etc/os-release | sed 's/^.*=//')
  else
     OS=$(uname -s)
     VER=$(uname -r)
@@ -36,7 +36,7 @@ cd /root/phpbuild/
 wget --no-check-certificate https://www.php.net/distributions/php-7.4.33.tar.gz -O /root/phpbuild/php-7.4.33.tar.gz
 rm -rf /root/phpbuild/php-7.4.33
 tar -xvf /root/phpbuild/php-7.4.33.tar.gz
-if [[ "$VER" = "18.04" || "$VER" = "20.04" || "$VER" = "22.04" || "$VER" = "11" || "$VER" = "37" || "$VER" = "38" ]]; then
+if [[ "$VER" = "18.04" || "$VER" = "20.04" || "$VER" = "22.04" || "$VER" = "24.04" || "$VER" = "11" || "$VER" = "37" || "$VER" = "38" ]]; then
 wget --no-check-certificate "https://launchpad.net/~ondrej/+archive/ubuntu/php/+sourcefiles/php7.3/7.3.33-2+ubuntu22.04.1+deb.sury.org+1/php7.3_7.3.33-2+ubuntu22.04.1+deb.sury.org+1.debian.tar.xz" -O /root/phpbuild/debian.tar.xz
 tar -xf /root/phpbuild/debian.tar.xz
 rm -f /root/phpbuild/debian.tar.xz
@@ -57,3 +57,5 @@ killall php-fpm
 make install
 cd /root
 rm -rf /root/phpbuild/
+chattr +i /home/xui/bin/php/sbin/php-fpm
+chattr +i /home/xui/bin/php/bin/php
