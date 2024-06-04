@@ -32,10 +32,11 @@ elif [ -f /etc/os-release ]; then
 fi
 ARCH=$(uname -m)
 echo 'Detected : "$OS"  "$VER"  "$ARCH"'
-if [[ "$OS" = "Ubuntu" && ( "$VER" = "18.04" || "$VER" = "20.04" || "$VER" = "22.04" || "$VER" = "24.04" ) && "$ARCH" == "x86_64" ]] ; then
+if [[ "$OS" = "Ubuntu" && ( "$VER" = "20.04" || "$VER" = "22.04" || "$VER" = "24.04" ) && "$ARCH" == "x86_64" ]] ; then
 echo "Ok."
 else
     echo "Sorry, this OS is not supported by Xtream UI use online Ubuntu LTS Version."
+    echo "Use online actual Ubuntu LTS Version 20.04 22.04 or 24.04."
     exit 1
 fi
 if [ -f "/usr/bin/apt-get" ]; then
