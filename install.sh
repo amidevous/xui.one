@@ -31,7 +31,7 @@ elif [ -f /etc/os-release ]; then
     VER="$(uname -r)"
 fi
 ARCH=$(uname -m)
-echo 'Detected : "$OS"  "$VER"  "$ARCH"'
+echo "Detected : $OS  $VER  $ARCH"
 if [[ "$OS" = "Ubuntu" && ( "$VER" = "20.04" || "$VER" = "22.04" || "$VER" = "24.04" ) && "$ARCH" == "x86_64" ]] ; then
 echo "Ok."
 else
