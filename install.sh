@@ -11,27 +11,27 @@ if [ -f /etc/centos-release ]; then
     else
     OS="CentOs"
     fi    
-    VERFULL=$(sed 's/^.*release //;s/ (Fin.*$//' /etc/centos-release)
-    VER=${VERFULL:0:1} # return 6, 7 or 8
+    VERFULL="$(sed 's/^.*release //;s/ (Fin.*$//' /etc/centos-release)"
+    VER="${VERFULL:0:1}" # return 6, 7 or 8
 elif [ -f /etc/fedora-release ]; then
     inst() {
        rpm -q "$1" &> /dev/null
     } 
     OS="Fedora"
-    VERFULL=$(sed 's/^.*release //;s/ (Fin.*$//' /etc/fedora-release)
-    VER=${VERFULL:0:2} # return 34, 35 or 36
+    VERFULL="$(sed 's/^.*release //;s/ (Fin.*$//' /etc/fedora-release)"
+    VER="${VERFULL:0:2}" # return 34, 35 or 36
 elif [ -f /etc/lsb-release ]; then
-    OS=$(grep DISTRIB_ID /etc/lsb-release | sed 's/^.*=//')
-    VER=$(grep DISTRIB_RELEASE /etc/lsb-release | sed 's/^.*=//')
+    OS="$(grep DISTRIB_ID /etc/lsb-release | sed 's/^.*=//')"
+    VER="$(grep DISTRIB_RELEASE /etc/lsb-release | sed 's/^.*=//')"
 elif [ -f /etc/os-release ]; then
-    OS=$(grep -w ID /etc/os-release | sed 's/^.*=//')
-    VER=$(grep VERSION_ID /etc/os-release | sed 's/^.*"\(.*\)"/\1/' | head -n 1 | tail -n 1)
+    OS="$(grep -w ID /etc/os-release | sed 's/^.*=//')"
+    VER="$(grep -w VERSION_ID /etc/os-release | sed 's/^.*=//')"
  else
-    OS=$(uname -s)
-    VER=$(uname -r)
+    OS="$(uname -s)"
+    VER="$(uname -r)"
 fi
 ARCH=$(uname -m)
-echo "Detected : $OS  $VER  $ARCH"
+echo 'Detected : "$OS"  "$VER"  "$ARCH"'
 if [[ "$OS" = "Ubuntu" && ( "$VER" = "18.04" || "$VER" = "20.04" || "$VER" = "22.04" || "$VER" = "24.04" ) && "$ARCH" == "x86_64" ]] ; then
 echo "Ok."
 else
