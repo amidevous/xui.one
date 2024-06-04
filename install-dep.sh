@@ -65,7 +65,7 @@ if [[ "$OS" = "CentOs" && "$VER" = "6" && "$ARCH" == "x86_64" ||
 "$OS" = "CentOs-Stream" && "$VER" = "8" && "$ARCH" == "x86_64" ||
 "$OS" = "CentOs-Stream" && "$VER" = "9" && "$ARCH" == "x86_64" ||
 "$OS" = "Fedora" && ("$VER" = "36" || "$VER" = "37" || "$VER" = "38" ) && "$ARCH" == "x86_64" ||
-"$OS" = "Ubuntu" && ( "$VER" = "18.04" || "$VER" = "20.04" || "$VER" = "22.04" ) && "$ARCH" == "x86_64" ||
+"$OS" = "Ubuntu" && ( "$VER" = "18.04" || "$VER" = "20.04" || "$VER" = "22.04" || "$VER" = "24.04" ) && "$ARCH" == "x86_64" ||
 "$OS" = "debian" && ("$VER" = "10" || "$VER" = "11" ) && "$ARCH" == "x86_64" ]] ; then
 echo "Ok."
 else
@@ -682,8 +682,8 @@ EOF
   add-apt-repository -y ppa:ondrej/apache2
 	add-apt-repository -y -s ppa:ondrej/php
 	add-apt-repository -y ppa:maxmind/ppa
-echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_$VER /' | sudo tee /etc/apt/sources.list.d/podman.list
-wget -qO- "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_$VER/Release.key" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/podman.gpg > /dev/null
+echo 'deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_'$VER' /' | sudo tee /etc/apt/sources.list.d/podman.list
+wget -qO- 'https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_'$VER'/Release.key' | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/podman.gpg > /dev/null
 	apt-get update
 wget -qO- "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xF1656F24C74CD1D8" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/mariadb.gpg > /dev/null
 	add-apt-repository -y "deb [arch=amd64,arm64,ppc64el] https://mirrors.nxthost.com/mariadb/repo/10.6/ubuntu/ $(lsb_release -cs) main"
@@ -780,39 +780,6 @@ if [[ "$OS" = "Ubuntu" || "$OS" = "debian" ]]; then
 	apt-get -y --force-yes install libacl1-dev
 	apt-get -y --force-yes install libapparmor-dev
 	apt-get -y --force-yes install libapr1-dev
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
-	apt-get -y --force-yes install 
 	apt-get -y --force-yes install debhelper
 	apt-get -y --force-yes install cdbs
 	apt-get -y --force-yes install lintian
@@ -945,7 +912,8 @@ if [[ "$OS" = "Ubuntu" || "$OS" = "debian" ]]; then
 	apt-get -y install libapache2-mod-php8.0 php8.0 php8.0-common php8.0-fpm php8.0-cli php8.0-mysql php8.0-gd php8.0-mcrypt php8.0-curl php8.0-imap php8.0-xmlrpc php8.0-xsl php8.0-intl php8.0-dev php8.0-mbstring
 	apt-get -y install libapache2-mod-php8.1 php8.1 php8.1-common php8.1-fpm php8.1-cli php8.1-mysql php8.1-gd php8.1-mcrypt php8.1-curl php8.1-imap php8.1-xmlrpc php8.1-xsl php8.1-intl php8.1-dev php8.1-mbstring
 	apt-get -y install libapache2-mod-php8.2 php8.2 php8.2-common php8.2-fpm php8.2-cli php8.2-mysql php8.2-gd php8.2-mcrypt php8.2-curl php8.2-imap php8.2-xmlrpc php8.2-xsl php8.2-intl php8.2-dev php8.2-mbstring
-	update-alternatives --set php /usr/bin/php7.4
+	apt-get -y install libapache2-mod-php8.3 php8.3 php8.3-common php8.3-fpm php8.3-cli php8.3-mysql php8.3-gd php8.3-mcrypt php8.3-curl php8.3-imap php8.3-xmlrpc php8.3-xsl php8.3-intl php8.3-dev php8.3-mbstring
+ 	update-alternatives --set php /usr/bin/php7.4
 	update-alternatives --set phar /usr/bin/phar7.4
 	update-alternatives --set phar.phar /usr/bin/phar.phar7.4
 	update-alternatives --set phpize /usr/bin/phpize7.4
