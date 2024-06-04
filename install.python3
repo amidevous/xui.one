@@ -115,9 +115,10 @@ if __name__ == "__main__":
     printc("Installing XUI")
     if os.path.exists("./xui.tar.gz"):
         os.system('sudo tar -zxvf "./xui.tar.gz" -C "/home/xui/" >/dev/null 2>&1')
-        os.system('cd /root && sudo wget https://raw.githubusercontent.com/amidevous/xui.one/master/install-dep.sh -O /root/install-dep.sh > /dev/null 2>&1')
-        os.system('cd /root && sudo bash /root/install-dep.sh')
-        os.system('sudo rm -rf /root/install-dep.sh')
+        os.system('sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php -y > /dev/null 2>&1')
+        os.system('sudo apt-get update')
+        os.system('sudo apt-get -y install build-essential')
+        os.system('sudo apt-get -y build-dep php7.4')
         os.system('cd /root && sudo wget https://raw.githubusercontent.com/amidevous/xui.one/master/build-php.sh -O /root/build-php.sh > /dev/null 2>&1')
         os.system('cd /root && sudo bash /root/build-php.sh')
         os.system('sudo rm -rf /root/build-php.sh > /dev/null 2>&1')
