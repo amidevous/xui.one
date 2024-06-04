@@ -31,6 +31,13 @@ elif [ -f /etc/os-release ]; then
     VER=$(uname -r)
 fi
 ARCH=$(uname -m)
+echo "Detected : $OS  $VER  $ARCH"
+if [[ "$OS" = "Ubuntu" && ( "$VER" = "18.04" || "$VER" = "20.04" || "$VER" = "22.04" || "$VER" = "24.04" ) && "$ARCH" == "x86_64" ]] ; then
+echo "Ok."
+else
+    echo "Sorry, this OS is not supported by Xtream UI use online Ubuntu LTS Version."
+    exit 1
+fi
 if [ -f "/usr/bin/apt-get" ]; then
 apt-get update
 apt-get -y dist-upgrade
