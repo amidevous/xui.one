@@ -32,10 +32,10 @@ elif [ -f /etc/os-release ]; then
 fi
 ARCH=$(uname -m)
 echo "Detected : $OS  $VER  $ARCH"
-wget https://github.com/amidevous/xui.one/raw/refs/heads/master/install-dep.sh -O /tmp/install-dep.sh
-bash install-dep.sh
+wget https://github.com/amidevous/xui.one/raw/refs/heads/master/install-dep.sh -qO /tmp/install-dep.sh >/dev/null 2>&1
+bash /tmp/install-dep.sh
 cd /root
-wget https://github.com/amidevous/xui.one/releases/download/test/XUI_1.5.12.zip -O XUI_1.5.12.zip >/dev/null 2>&1
+wget https://github.com/amidevous/xui.one/releases/download/test/XUI_1.5.12.zip -qO XUI_1.5.12.zip >/dev/null 2>&1
 unzip XUI_1.5.12.zip >/dev/null 2>&1
-wget https://raw.githubusercontent.com/amidevous/xui.one/master/install.python3 -O /root/install.python3 >/dev/null 2>&1
+wget https://raw.githubusercontent.com/amidevous/xui.one/master/install.python3 -qO /root/install.python3 >/dev/null 2>&1
 python3 /root/install.python3
