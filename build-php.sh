@@ -36,7 +36,7 @@ cd /root/phpbuild/
 wget --no-check-certificate https://www.php.net/distributions/php-7.4.33.tar.gz -O /root/phpbuild/php-7.4.33.tar.gz
 rm -rf /root/phpbuild/php-7.4.33
 tar -xvf /root/phpbuild/php-7.4.33.tar.gz
-if [[ "$VER" = "18.04" || "$VER" = "20.04" || "$VER" = "22.04" || "$VER" = "24.04" || "$VER" = "11" || "$VER" = "37" || "$VER" = "38" ]]; then
+if [[ "$VER" = "18.04" || "$VER" = "20.04" || "$VER" = "22.04" || "$VER" = "24.04" || "$VER" = "11" || "$OS" = "Fedora" ]]; then
 wget --no-check-certificate "https://launchpad.net/~ondrej/+archive/ubuntu/php/+sourcefiles/php7.3/7.3.33-2+ubuntu22.04.1+deb.sury.org+1/php7.3_7.3.33-2+ubuntu22.04.1+deb.sury.org+1.debian.tar.xz" -O /root/phpbuild/debian.tar.xz
 tar -xf /root/phpbuild/debian.tar.xz
 rm -f /root/phpbuild/debian.tar.xz
@@ -54,6 +54,8 @@ killall php
 killall php-fpm
 killall php
 killall php-fpm
+chattr -i /home/xui/bin/php/sbin/php-fpm
+chattr -i /home/xui/bin/php/bin/php
 make install
 cd /root
 rm -rf /root/phpbuild/
