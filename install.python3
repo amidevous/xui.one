@@ -15,14 +15,14 @@ rSysCtl = '# XUI.one\n\nnet.ipv4.tcp_congestion_control = bbr\nnet.core.default_
 rSystemd = '[Unit]\nSourcePath=/home/xui/service\nDescription=XUI.one Service\nAfter=network.target\nStartLimitIntervalSec=0\n\n[Service]\nType=simple\nUser=root\nRestart=always\nRestartSec=1\nExecStart=/bin/bash /home/xui/service start\nExecRestart=/bin/bash /home/xui/service restart\nExecStop=/bin/bash /home/xui/service stop\n\n[Install]\nWantedBy=multi-user.target'
 rChoice = "23456789abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ"
 
-rVersions = {
-    "14.04": "trusty",
-    "16.04": "xenial",
-    "18.04": "bionic",
-    "20.04": "focal",
-    "22.04": "jammy",
-    "24.04": "noble"
-}
+#rVersions = {
+#    "14.04": "trusty",
+#    "16.04": "xenial",
+#    "18.04": "bionic",
+#    "20.04": "focal",
+#    "22.04": "jammy",
+#    "24.04": "noble"
+#}
 
 class col:
     HEADER = '\033[95m'
@@ -88,15 +88,15 @@ if __name__ == "__main__":
             try: os.remove(rFile)
             except: pass
     printc("Updating system")
-    os.system("sudo DEBIAN_FRONTEND=noninteractive apt-get update >/dev/null 2>&1")
-    os.system("sudo DEBIAN_FRONTEND=noninteractive apt-get -yq install software-properties-common >/dev/null 2>&1")
-    if rVersion in rVersions:
-        printc("Adding repo: Ubuntu %s" % rVersion)
-        os.system("sudo DEBIAN_FRONTEND=noninteractive apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8 >/dev/null 2>&1")
-        os.system("sudo DEBIAN_FRONTEND=noninteractive add-apt-repository -y 'deb [arch=amd64,arm64,ppc64el] http://ams2.mirrors.digitalocean.com/mariadb/repo/10.6/ubuntu %s main'  >/dev/null 2>&1" % rVersions[rVersion])
-    os.system("sudo DEBIAN_FRONTEND=noninteractive add-apt-repository -y ppa:maxmind/ppa  >/dev/null 2>&1")
-    os.system("sudo DEBIAN_FRONTEND=noninteractive apt-get update  >/dev/null 2>&1")
-    os.system("sudo DEBIAN_FRONTEND=noninteractive apt-get -y dist-upgrade >/dev/null 2>&1")
+ #   os.system("sudo DEBIAN_FRONTEND=noninteractive apt-get update >/dev/null 2>&1")
+#    os.system("sudo DEBIAN_FRONTEND=noninteractive apt-get -yq install software-properties-common >/dev/null 2>&1")
+ #   #if rVersion in rVersions:
+ #   #    printc("Adding repo: Ubuntu %s" % rVersion)
+ #   #    os.system("sudo DEBIAN_FRONTEND=noninteractive apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8 >/dev/null 2>&1")
+  #  #    os.system("sudo DEBIAN_FRONTEND=noninteractive add-apt-repository -y 'deb [arch=amd64,arm64,ppc64el] http://ams2.mirrors.digitalocean.com/mariadb/repo/10.6/ubuntu %s main'  >/dev/null 2>&1" % rVersions[rVersion])
+  #  #os.system("sudo DEBIAN_FRONTEND=noninteractive add-apt-repository -y ppa:maxmind/ppa  >/dev/null 2>&1")
+  #  #os.system("sudo DEBIAN_FRONTEND=noninteractive apt-get update  >/dev/null 2>&1")
+   # #os.system("sudo DEBIAN_FRONTEND=noninteractive apt-get -y dist-upgrade >/dev/null 2>&1")
     for rPackage in rRemove:
         printc("Removing %s" % rPackage)
         os.system("sudo DEBIAN_FRONTEND=noninteractive apt-get remove %s -y  >/dev/null 2>&1" % rPackage)
