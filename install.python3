@@ -56,11 +56,11 @@ if __name__ == "__main__":
     # START                                          #
     ##################################################
     
-    try: rVersion = os.popen('lsb_release -sr').read().strip()
-    except: rVersion = None
-    if not rVersion in rVersions:
-        printc("Unsupported Operating System")
-        sys.exit(1)
+    #try: rVersion = os.popen('lsb_release -sr').read().strip()
+    #except: rVersion = None
+    #if not rVersion in rVersions:
+    #    printc("Unsupported Operating System")
+    #    sys.exit(1)
     
     if not os.path.exists("./xui.tar.gz") and not os.path.exists("./xui_trial.tar.gz"):
         print("Fatal Error: xui.tar.gz is missing. Please download it from XUI billing panel.")
