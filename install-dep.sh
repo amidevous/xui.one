@@ -64,7 +64,7 @@ if [[ "$OS" = "CentOs" && "$VER" = "6" && "$ARCH" == "x86_64" ||
 "$OS" = "CentOs" && "$VER" = "7" && "$ARCH" == "x86_64" ||
 "$OS" = "CentOs-Stream" && "$VER" = "8" && "$ARCH" == "x86_64" ||
 "$OS" = "CentOs-Stream" && "$VER" = "9" && "$ARCH" == "x86_64" ||
-"$OS" = "Fedora" && ("$VER" = "36" || "$VER" = "37" || "$VER" = "38" ) && "$ARCH" == "x86_64" ||
+"$OS" = "Fedora" && "$ARCH" == "x86_64" ||
 "$OS" = "Ubuntu" && ( "$VER" = "18.04" || "$VER" = "20.04" || "$VER" = "22.04" || "$VER" = "24.04" ) && "$ARCH" == "x86_64" ||
 "$OS" = "debian" && ("$VER" = "10" || "$VER" = "11" ) && "$ARCH" == "x86_64" ]] ; then
 echo "Ok."
@@ -333,7 +333,7 @@ EOF
 	setenforce 0
 
 	# Stop conflicting services and iptables to ensure all services will work
-	if  [[ "$VER" = "7" || "$VER" = "8" || "$VER" = "34" || "$VER" = "35" || "$VER" = "36" ]]; then
+	if  [[ "$VER" = "7" || "$VER" = "8" || "$OS" = "Fedora" ]]; then
 		systemctl  stop sendmail.service
 		systemctl  disabble sendmail.service
 	else
@@ -343,12 +343,12 @@ EOF
 	# disable firewall
 	$PACKAGE_INSTALLER iptables
 	$PACKAGE_INSTALLER firewalld
-	if  [[ "$VER" = "7" || "$VER" = "8" || "$VER" = "34" || "$VER" = "35" || "$VER" = "36" ]]; then
+	if  [[ "$VER" = "7" || "$VER" = "8" || "$OS" = "Fedora" ]]; then
 		FIREWALL_SERVICE="firewalld"
 	else
 		FIREWALL_SERVICE="iptables"
 	fi
-	if  [[ "$VER" = "7" || "$VER" = "8" || "$VER" = "34" || "$VER" = "35" || "$VER" = "36" ]]; then
+	if  [[ "$VER" = "7" || "$VER" = "8" || "$OS" = "Fedora" ]]; then
 		systemctl  save "$FIREWALL_SERVICE".service
 		systemctl  stop "$FIREWALL_SERVICE".service
 		systemctl  disable "$FIREWALL_SERVICE".service
