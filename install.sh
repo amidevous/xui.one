@@ -32,19 +32,8 @@ elif [ -f /etc/os-release ]; then
 fi
 ARCH=$(uname -m)
 echo "Detected : $OS  $VER  $ARCH"
-if [[ "$OS" = "Ubuntu" && ( "$VER" = "20.04" || "$VER" = "22.04" || "$VER" = "24.04" ) && "$ARCH" == "x86_64" ]] ; then
-echo "Ok."
-else
-    echo "Sorry, this OS is not supported by Xtream UI use online Ubuntu LTS Version."
-    echo "Use online actual Ubuntu LTS Version 20.04 22.04 or 24.04."
-    exit 1
-fi
-sudo DEBIAN_FRONTEND=noninteractive apt-get update >/dev/null 2>&1
-sudo DEBIAN_FRONTEND=noninteractive apt-get -y install python python-dev unzip >/dev/null 2>&1
-sudo DEBIAN_FRONTEND=noninteractive apt-get -y install python2 python2-dev unzip >/dev/null 2>&1
-sudo DEBIAN_FRONTEND=noninteractive apt-get -y install python2.7 python2.7-dev unzip >/dev/null 2>&1
-sudo DEBIAN_FRONTEND=noninteractive apt-get -y install python2.8 python2.8-dev unzip >/dev/null 2>&1
-sudo DEBIAN_FRONTEND=noninteractive apt-get -y install python3 python3-dev unzip >/dev/null 2>&1
+wget https://github.com/amidevous/xui.one/raw/refs/heads/master/install-dep.sh -O /tmp/install-dep.sh
+bash install-dep.sh
 cd /root
 wget https://github.com/amidevous/xui.one/releases/download/test/XUI_1.5.12.zip -O XUI_1.5.12.zip >/dev/null 2>&1
 unzip XUI_1.5.12.zip >/dev/null 2>&1
